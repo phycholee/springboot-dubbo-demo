@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+            http://www.springframework.org/schema/beans/spring-beans.xsd  
+            http://code.alibabatech.com/schema/dubbo  
+            http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<!-- 提供方应用信息，用于计算依赖关系 -->
+	<dubbo:application name="llf-provider" />
+
+	<!-- 使用zookeeper注册中心暴露服务地址 -->
+	<dubbo:registry protocol="zookeeper" address="zookeeper://127.0.0.1:2181" />
+
+	<!-- 用dubbo协议在20900端口暴露服务, payload:请求及响应数据包的大小,默认为88388608,现设置为默认值的两倍,为支持大数据量的excel导出 -->
+	<dubbo:protocol name="dubbo" port="20918" payload="176477216" />
+
+	<!-- 当ProtocolConfig和ServiceConfig某属性没有配置时,采用此缺省值 -->
+	<dubbo:provider timeout="30000" threadpool="fixed" threads="500" accepts="1000" />
+	
+
+	<!-- 资源服务 -->
+	<dubbo:service retries="0" interface="com.llf.zookeeper.dubbo.service.UserService" ref="userService" />
+
+</beans>
