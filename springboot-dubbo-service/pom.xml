@@ -7,15 +7,12 @@
   <version>1.0-SNAPSHOT</version>
   <name>springboot-dubbo-service Maven Webapp</name>
   <url>http://maven.apache.org</url>
+
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>1.5.1.RELEASE</version>
   </parent>
-
-  <properties>
-    <dubbo-spring-boot>1.0.0</dubbo-spring-boot>
-  </properties>
 
   <dependencies>
     <!-- junit依赖 -->
@@ -41,7 +38,7 @@
     <dependency>
       <groupId>org.mybatis.spring.boot</groupId>
       <artifactId>mybatis-spring-boot-starter</artifactId>
-      <version>${dubbo-spring-boot}</version>
+      <version>1.0.0</version>
     </dependency>
 
     <!-- mysql-connector-java -->
